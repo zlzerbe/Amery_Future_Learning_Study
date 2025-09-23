@@ -26,7 +26,7 @@ include("../Utils/trapezoidal.jl")
 include("../Utils/scale_utils.jl")
 using .ScaleUtils
 
-include("../Utils/amery_calibration.jl")
+include("../HPC_Bayesian_Calibration/amery_calibration.jl")
 using .amery_sequential_calibration 
 
 include("../Utils/gp_utils.jl")

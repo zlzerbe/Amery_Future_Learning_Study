@@ -4,7 +4,7 @@ module Calibration_model
 
 using Turing, Distributions, GaussianProcesses
 
-include("./trapezoidal.jl")
+include("../Utils/trapezoidal.jl")
 
 export model_func
 

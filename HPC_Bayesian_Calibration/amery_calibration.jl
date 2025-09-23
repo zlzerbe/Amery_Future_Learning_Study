@@ -33,7 +33,7 @@ using .ScaleUtils
 include("../Utils/gp_utils.jl")
 using .GPUtils
 
-include("../Utils/calibration_model.jl")
+include("../HPC_Bayesian_Calibration/calibration_model.jl")
 using .Calibration_model
 
 using Random

@@ -33,8 +33,8 @@ using .ScaleUtils
 include("../Utils/gp_utils.jl")
 using .GPUtils
 
-include("../Utils/calibration_model.jl")
-using .Recalibration
+include("../HPC_Bayesian_Calibration/calibration_model.jl")
+using .Calibration_model
 
 using Random
 
@@ -91,7 +91,7 @@ export calibration_func
             y_vol_maxs_sub = Yvol_maxs[col_idx[1]:col_idx[end]]
 
             #Define your turing model
-            model = Recalibration.recalibration_func(
+            model = Calibration_model.model_func(
                 Y_obs_w_present,
                 X_mins, X_maxs,
                 Yc_mins, Yc_maxs,
