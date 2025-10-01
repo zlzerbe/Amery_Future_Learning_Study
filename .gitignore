@@ -1,0 +1,4 @@
+# Ignore big data folders
+Data/HPC_Data
+Data/Posterior_Data
+Data/Projection_Data
