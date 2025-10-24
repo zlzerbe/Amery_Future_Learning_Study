@@ -1,4 +1,4 @@
-LearningPeriod,ΔvmThresh,Δ_%_vmThresh,Δ_fricExp,Δ_%_fricExp,Δ_mu_scale,Δ_%_mu_scale,Δ_stiff_scale,Δ_%_stiff_scale,Δ_gamma0,Δ_%_gamma0,Δ_melt_flux,Δ_%_melt_flux
+LearningPeriod,ΔvmThresh,Δ_%_vmThresh,Δ_fricExp,Δ_%_fricExp,Δ_mu_scale,Δ_%_mu_scale,Δ_stiff_scale,Δ_%_stiff_scale,Δ_log(gamma0),Δ_%_log(gamma0),Δ_melt_flux,Δ_%_melt_flux
 2015 - 2030,-308.545,3.692,-0.005,3.307,-0.020,13.987,-0.010,8.457,-0.065,2.839,-0.110,0.936
 2030 - 2045,-15.534,0.186,-0.008,5.482,-0.005,3.189,-0.005,4.594,-0.211,9.239,-0.191,1.631
 2045 - 2060,-122.379,1.464,-0.002,1.180,-0.002,1.250,-0.004,3.212,-0.456,19.984,-0.365,3.111
