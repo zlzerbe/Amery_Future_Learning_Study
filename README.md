@@ -1,3 +1,5 @@
+This repository contains the code, and some of the data employed and generated in the paper " ... ". Below is a description of the contents. Feel free to reach out if you have any questions about the repository or paper. 
+
 /Computational Notebooks 
 This directory consists of notebooks used to compute various quantities in the statistical workflow employed by this study.
 
