@@ -12,43 +12,33 @@ export model_func
 # Module-level constants for observational noise
 const σ_cal  = 21.95
 const σ_grd  = 7.540
-const σ_mass = 5.721
+const σ_smb = 5.721
 #─────────────────────────────────────────────────────────────────────────────
 
 
 #─────────────────────────────────────────────────────────────────────────────
-#   @model recalibration_func(
-#       Y_cal_obs, Y_grd_obs, Y_mass_obs,
-#       X_mins, X_maxs,
-#       Yc_mins, Yc_maxs,
-#       Yg_mins, Yg_maxs,
-#       Ym_mins, Ym_maxs,
-#       gps_cal, gps_grd, gps_mass
-#   )
 #
 # A “vectorized” Turing model: at each θ‐draw it:
-#   •  broadcasts `predict_y.` to get all calving‐front means & variances,
-#   •  broadcasts for grounding‐line,
-#   •  broadcasts for mass‐change,
+#   broadcasts `predict_y.` to get all calving‐front, surface mass balance, grounding line and cumulative grounded mass change means & variances,
 # then transforms and applies Gaussian‐likelihoods in a short loop.
 #─────────────────────────────────────────────────────────────────────────────
 @model function model_func(
-    Y_obs::Vector{Float64},    # length = n_years, must take form (calObs, grdObs, massObs,volObs1, volObs2, .....)
+    Y_obs::Vector{Float64},    
     X_mins::Dict{Symbol,Float64},
     X_maxs::Dict{Symbol,Float64},
-    Yc_mins::Vector{Float64},      # original‐scale min for calving‐front per year
-    Yc_maxs::Vector{Float64},      # original‐scale max for calving‐front per year
-    Yg_mins::Vector{Float64},      # original‐scale min for grounding‐line per year
-    Yg_maxs::Vector{Float64},      # original‐scale max for grounding‐line per year
-    Ym_mins::Vector{Float64},      # original‐scale min for mass‐change per year
-    Ym_maxs::Vector{Float64},      # original‐scale max for mass‐change per year
-    Yvol_mins::Vector{Float64},
-    Yvol_maxs::Vector{Float64},
-    Yvol_vars::Vector{Float64},
+    Yc_mins::Vector{Float64},      
+    Yc_maxs::Vector{Float64},      
+    Yg_mins::Vector{Float64},      
+    Yg_maxs::Vector{Float64},      
+    Ysmb_mins::Vector{Float64},      
+    Ysmb_maxs::Vector{Float64},      
+    Ymass_mins::Vector{Float64},
+    Ymass_maxs::Vector{Float64},
+    Ymass_vars::Vector{Float64},
     gp_cal,
     gp_grd,
-    gp_mass,
-    gps_vol
+    gp_smb,
+    gps_mass
 )
 
     # 1) Priors on the 6 input parameters, truncated to Sobol ranges:
@@ -84,28 +74,28 @@ const σ_mass = 5.721
 
 
     # 3) Broadcasted GP predictions for each observable:
-    cal_preds  = predict_y.(gp_cal,  Ref(θ))   # Vector of ((μc, varc), …)
+    cal_preds  = predict_y.(gp_cal,  Ref(θ))   
     grd_preds  = predict_y.(gp_grd,  Ref(θ))
-    mass_preds = predict_y.(gp_mass, Ref(θ))
-    vol_preds =  predict_y.(gps_vol, Ref(θ))
-    
+    smb_preds = predict_y.(gp_smb, Ref(θ))
+    mass_preds =  predict_y.(gps_mass, Ref(θ))
 
     # 4) Unzip raw means/vars
-    μc_raws   = only.([c[1] for c in cal_preds])   # in [0,1]
+    μc_raws   = only.([c[1] for c in cal_preds])   
     varc_raws = [c[2][1] for c in cal_preds]
     μg_raws   = only.([g[1] for g in grd_preds])
     varg_raws = [g[2][1] for g in grd_preds]
-    μm_raws   = only.([m[1] for m in mass_preds])
-    varm_raws = [m[2][1] for m in mass_preds]
-    μVol_raws   = only.([m[1] for m in vol_preds])
-    varVol_raws = [m[2][1] for m in vol_preds]
+    μ_smb_raws   = only.([m[1] for m in smb_preds])
+    var_smb_raws = [m[2][1] for m in smb_preds]
+    μ_mass_raws   = only.([m[1] for m in mass_preds])
+    var_mass_raws = [m[2][1] for m in mass_preds]
     
 
     # 5) Compute raw SDs
     sc_raw = sqrt.(varc_raws)
     sg_raw = sqrt.(varg_raws)
-    sm_raw = sqrt.(varm_raws)
-    sv_raw = sqrt.(varVol_raws)
+    s_smb_raw = sqrt.(var_smb_raws)
+    
+    s_mass_raw = sqrt.(var_mass_raws)
     
 
     # 6) Un‐scale to original units
@@ -113,18 +103,20 @@ const σ_mass = 5.721
     sc_un = sc_raw    .* (Yc_maxs .- Yc_mins)
     μg_un = μg_raws .* (Yg_maxs .- Yg_mins) .+ Yg_mins
     sg_un = sg_raw    .* (Yg_maxs .- Yg_mins)
-    μm_un = μm_raws .* (Ym_maxs .- Ym_mins) .+ Ym_mins
-    sm_un = sm_raw    .* (Ym_maxs .- Ym_mins)
     
-    μv_un = μVol_raws .* (Yvol_maxs .- Yvol_mins) .+ Yvol_mins
-    sv_un = sv_raw    .* (Yvol_maxs .- Yvol_mins)
+    μ_smb_un = μ_smb_raws .* (Ysmb_maxs .- Ysmb_mins) .+ Ysmb_mins
+    s_smb_un = s_smb_raw    .* (Ysmb_maxs .- Ysmb_mins)
+    
+    μ_mass_un = μ_mass_raws .* (Ymass_maxs .- Ymass_mins) .+ Ymass_mins
+    s_mass_un = s_mass_raw    .* (Ymass_maxs .- Ymass_mins)
 
     # Concatenate the different emulator mean outputs
-    means = vcat(μc_un,μg_un,μm_un,μv_un)
+    means = vcat(μc_un,μg_un,μ_smb_un,μ_mass_un)
 
-    # Concatenate the different emulator standard deviation outputs
-    sigma_all = vcat(sc_un, sg_un, sm_un, sv_un)
-    obs_noise_all = vcat(σ_cal, σ_grd, σ_mass, Yvol_vars)
+    # Concatenate the different emulator uncertainties
+    sigma_all = vcat(sc_un, sg_un, s_smb_un, s_mass_un)
+    # Concatenate the different observational uncertainties
+    obs_noise_all = vcat(σ_cal, σ_grd, σ_smb, Ymass_vars)
     sigmas = sqrt.(obs_noise_all.^2 .+ sigma_all.^2)
     
 
