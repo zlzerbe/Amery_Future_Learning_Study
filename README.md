@@ -1,4 +1,6 @@
-This repository contains the code, and some of the data employed and generated in the paper " ... ". Below is a description of the contents. Feel free to reach out if you have any questions about the repository or paper. 
+This repository contains the code, and some of the data employed and generated in the paper "Amery Ice Shelf Future Learning Study" (working title). Below is a description of the contents. Feel free to reach out if you have any questions about the repository or paper. 
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17923081.svg)](https://doi.org/10.5281/zenodo.17923081)
 
 /Computational Notebooks 
 This directory consists of notebooks used to compute various quantities in the statistical workflow employed by this study.
