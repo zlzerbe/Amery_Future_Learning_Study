@@ -1,4 +1,5 @@
 # Future learning for the Amery Ice Shelf
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24520784.svg)](https://doi.org/10.5281/zenodo.24520784)
 
 Code and data to reproduce our future-learning study of the Amery Ice Shelf catchment. The question
 it answers: as we collect future observations of the ice sheet, how much do we learn about the
