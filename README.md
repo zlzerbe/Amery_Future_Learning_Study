@@ -14,7 +14,7 @@ The pipeline has three parts:
 
 The paper it accompanies is listed in `CITATION.cff` and is as follows:
 
-Zerbe, Z., Jantre, S., Urban, N. M., Hoffman, M. J., & Hillebrand, T. (2026). Future learning and uncertainty reductions in projections of the Amery Ice Shelf catchment, Antarctica. EGUsphere, 2026, 1-33.
+Jantre, S., Hoffman, M. J., Zerbe, Z., Urban, N. M., & Hillebrand, T. (2026). Future learning and uncertainty reductions in projections of the Amery Ice Shelf catchment, Antarctica. EGUsphere, 2026, 1-33.
 
 ## What's in here
 

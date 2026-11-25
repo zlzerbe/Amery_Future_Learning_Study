@@ -1,24 +1,24 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite the associated paper below."
-title: "Future Learning — Amery Ice Shelf sequential Bayesian calibration"
+title: 'Amery Future Learning Study: code and data for "Future learning and uncertainty reductions in projections of the Amery Ice Shelf catchment, Antarctica"'
 version: 2.0.0
-date-released: 2026-11-23
+date-released: 2026-11-25
 license: MIT
 repository-code: "https://github.com/zlzerbe/Amery_Future_Learning_Study"
 doi: 10.5281/zenodo.17923080
 authors:
-  - family-names: Zerbe
-    given-names: Zach
-    orcid: "https://orcid.org/0009-0005-6656-3716"
   - family-names: Jantre
     given-names: Sanket
     orcid: "https://orcid.org/0000-0003-3611-0255"
-  - family-names: Urban
-    given-names: Nathan M.
-    orcid: "https://orcid.org/0000-0002-2264-3512"
   - family-names: Hoffman
     given-names: Matthew J.
     orcid: "https://orcid.org/0000-0001-5076-0540"
+  - family-names: Zerbe
+    given-names: Zach
+    orcid: "https://orcid.org/0009-0005-6656-3716"
+  - family-names: Urban
+    given-names: Nathan M.
+    orcid: "https://orcid.org/0000-0002-2264-3512"
   - family-names: Hillebrand
     given-names: Trevor
     orcid: "https://orcid.org/0000-0003-3535-1540"
@@ -26,18 +26,18 @@ preferred-citation:
   type: article
   title: "Future learning and uncertainty reductions in projections of the Amery Ice Shelf catchment, Antarctica"
   authors:
-    - family-names: Zerbe
-      given-names: Zach
-      orcid: "https://orcid.org/0009-0005-6656-3716"
     - family-names: Jantre
       given-names: Sanket
       orcid: "https://orcid.org/0000-0003-3611-0255"
-    - family-names: Urban
-      given-names: Nathan M.
-      orcid: "https://orcid.org/0000-0002-2264-3512"
     - family-names: Hoffman
       given-names: Matthew J.
       orcid: "https://orcid.org/0000-0001-5076-0540"
+    - family-names: Zerbe
+      given-names: Zach
+      orcid: "https://orcid.org/0009-0005-6656-3716"
+    - family-names: Urban
+      given-names: Nathan M.
+      orcid: "https://orcid.org/0000-0002-2264-3512"
     - family-names: Hillebrand
       given-names: Trevor
       orcid: "https://orcid.org/0000-0003-3535-1540"

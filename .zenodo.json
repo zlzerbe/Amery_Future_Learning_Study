@@ -1,0 +1,51 @@
+{
+  "title": "Amery Future Learning Study: code and data for \"Future learning and uncertainty reductions in projections of the Amery Ice Shelf catchment, Antarctica\"",
+  "upload_type": "software",
+  "description": "<p>Code and data accompanying the paper:</p><p>Jantre, S., Hoffman, M. J., Zerbe, Z., Urban, N. M., and Hillebrand, T. (2026). Future learning and uncertainty reductions in projections of the Amery Ice Shelf catchment, Antarctica. EGUsphere [preprint], <a href=\"https://doi.org/10.5194/egusphere-2026-1585\">https://doi.org/10.5194/egusphere-2026-1585</a>.</p><p>Sequential Bayesian calibration of the MALI ice-sheet model for the Amery Ice Shelf catchment against synthetic future observations, with projection of the catchment's sea-level contribution through 2300. Version 2.0.0 is the revised pipeline for the resubmitted manuscript: four error-model configurations (independent vs. temporally correlated observation error, emulator code uncertainty on/off), scripts, notebooks, emulators, inputs, and the synthetic observations needed to reproduce every figure. Generated outputs are not bundled. See README.md.</p>",
+  "creators": [
+    {
+      "name": "Jantre, Sanket",
+      "affiliation": "Brookhaven National Laboratory",
+      "orcid": "0000-0003-3611-0255"
+    },
+    {
+      "name": "Hoffman, Matthew J.",
+      "affiliation": "Los Alamos National Laboratory",
+      "orcid": "0000-0001-5076-0540"
+    },
+    {
+      "name": "Zerbe, Zach",
+      "affiliation": "Brookhaven National Laboratory; Colorado College",
+      "orcid": "0009-0005-6656-3716"
+    },
+    {
+      "name": "Urban, Nathan M.",
+      "affiliation": "Brookhaven National Laboratory",
+      "orcid": "0000-0002-2264-3512"
+    },
+    {
+      "name": "Hillebrand, Trevor",
+      "affiliation": "Los Alamos National Laboratory",
+      "orcid": "0000-0003-3535-1540"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Antarctica",
+    "Amery Ice Shelf",
+    "ice-sheet modelling",
+    "MALI",
+    "Bayesian calibration",
+    "Gaussian process emulator",
+    "sea-level projection",
+    "uncertainty quantification"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5194/egusphere-2026-1585",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
+    }
+  ]
+}
